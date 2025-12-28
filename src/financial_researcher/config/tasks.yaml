@@ -1,0 +1,65 @@
+research_task:
+  description: >
+    Conduct thorough research on {company}. Gather recent news, market trends, 
+    industry context, competitive positining, and notable developments. Focus
+    only on factual, verifiable information and avoid speculation.
+  expected_output: >
+    A well-structured research brief covering:
+    - Company overvirw
+    - Recent news and events
+    - Industry and market context
+    - Key opportunities and risks
+  agent: researcher
+
+analyst_task:
+  description: >
+    Analyse the research findings for {company}. Identify key insights, patterns,
+    strengths, weaknesses, opportunities, and risks. Evaluate the overall outlook
+    of the company based on the provided research only.
+  expected_output: >
+    A structured analytical assessment including:
+    - key insights derived from research 
+    - Strengths and weaknesses
+    - opportunities and risks
+    - Overall busines and market outlook
+  agent: analyst
+  context:
+    - research_task
+
+report_task:
+  description: >
+    Create a professional, concise financial report for {company} using the 
+    provided research and analysis. Focus on clarity, structure, and readability.
+    Do not introduce new facts or analysis.
+  expected_output: >
+    A polished financial report including:
+    - Executive summary
+    - Key findings
+    - Risk and opportunities overview
+    - Clear, professional conclusion
+  agent: editor
+  context:
+    - research_task
+    - analyst_task
+  output_file: output/report.md
+
+decision_task:
+  description: >
+    Review the final financial report for {company} and provide an
+    investment recommendation. Choose one of: Buy, Hold, or Sell.
+    Justify the recommendation clearly and conservatively, citing
+    strengths, risks, and uncertainties. Do not introduce new facts.
+  expected_output: >
+    A structured recommendation including:
+    - Final Recommendation: Buy / Hold / Sell
+    - Key supporting reasons
+    - Major risks to monitor
+    - Confidence level (Low / Medium / High)
+  agent: decision_maker
+  context:
+    - research_task
+    - analyst_task
+    - report_task
+  output_file: output/recommendation.md
+
+  

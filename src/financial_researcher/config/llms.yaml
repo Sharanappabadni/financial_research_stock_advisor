@@ -1,0 +1,14 @@
+openrouter_research:
+  provider: openrouter
+  model: meta-llama/llama-3.3-70b-instruct
+  temperature: 0.2
+
+openrouter_analyst:
+  provider: openrouter
+  model: xiaomi/mimo-v2-flash
+  temperature: 0.1
+
+openrouter_editor:
+  provider: openrouter
+  model: meta-llama/llama-3.1-70b-instruct
+  temperature: 0.3
