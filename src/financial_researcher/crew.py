@@ -2,11 +2,14 @@ from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
+from crewai_tools import SerperDevTool
 import os
 from dotenv import load_dotenv
 
+
 load_dotenv(override=True)
 api_key = os.getenv("OPENROUTER_API_KEY")
+serper_key = os.getenv("SERPERDEV_API_KEY")
 
 @CrewBase
 class FinancialResearcher():
@@ -24,6 +27,7 @@ class FinancialResearcher():
                 api_key=api_key,
             ),
             verbose=True,
+            tools=[SerperDevTool(api_key=serper_key)]
         )
 
     @agent

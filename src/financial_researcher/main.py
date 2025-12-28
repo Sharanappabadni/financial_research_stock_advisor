@@ -11,7 +11,8 @@ warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 def run():
     """Run the finacnial researcher crew"""
     inputs = {
-        'company': 'Swiggy'
+        'company': 'reliance power',
+        'report_date': datetime.now().strftime("%Y-%m-%d"),
     }
     
     result = FinancialResearcher().crew().kickoff(inputs=inputs)
